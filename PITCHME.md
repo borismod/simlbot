@@ -62,7 +62,7 @@ FinBot
 
 
 
-
+footnote : "Twitter: @bormod Github: @borismod"
 
 
 
