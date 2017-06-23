@@ -66,7 +66,7 @@ Fin: Sure, your balance is $36,000
 #HSLIDE
 ```xml
 <Model>
-	<Pattern>{MY NAME IS} *</Pattern>
+	<Pattern>MY NAME IS *</Pattern>
 	<Response>Hello <User Set="Name"><Match /></User>.</Response>
 </Model>
 ```
@@ -79,13 +79,13 @@ Fin: Sure, your balance is $36,000
 ```
 #HSLIDE
 ```xml
-<Concept Name="Balance" xmlns:finbot="http://finbot.com/namespace#finbot">
+<Concept Name="Balance" 
+	xmlns:finbot="http://finbot.com/namespace#finbot">
 	<Model>
-	  <Pattern>
-			<Item>{WHAT IS MY BALANCE}</Item>
-			<Item>{WHAT MY BALANCE IS}</Item>
-	   </Pattern>
-	  <Response>Your balance is <finbot:Balance></finbot:Balance></Response>
+	  <Pattern>{WHAT IS MY BALANCE}</Pattern>
+	  <Response>
+		Your balance is <finbot:Balance></finbot:Balance>
+	  </Response>
 	</Model>
 </Concept>
 ```
