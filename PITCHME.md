@@ -3,6 +3,7 @@
 #HSLIDE
 
 ##I am Boris Modylevsky
+##I am not a bot
 
 #HSLIDE
 
@@ -10,32 +11,24 @@ A chatbot is a computer program which conducts a conversation via auditory or te
 
 #HSLIDE
 
-## Turing Test
+FinBot video
+![Video](https://www.youtube.com/watch?v=8vAzybPv1fo)
 
 #HSLIDE
 
-Judge: My name is Andrew, what’s yours?
+Boris: Hello
 
-Mitsuku: Your name is Andrew. My name is Millie.
+Fin: Hi there! My name is Fin. Your personal financial ninja. What's your name?
 
-Judge: What’s my name?
+Boris: My name is Boris
 
-Mitsuku: Hmm. Your name is Andrew. Is it not?
+Fin: Hello Boris. It's nice to meet you. How can I help you?
 
-#HSLIDE
+Boris: Can you tell me my bank account balance?
 
-Judge: The cat tried to climb in the box but got stuck because it was too big. What was too big?
-
-Mitsuku: Well at least they tried their best. Large, above average in size or number or quantity or magnitude or extent.[2]
+Fin: Sure, your balance is $36,000
 
 #HSLIDE
-
-## Two bots talking
-![Video](https://www.youtube.com/watch?v=WnzlbyTZsQY)
-
-#HSLIDE
-
-FinBot
 
 #HSLIDE
 
@@ -43,25 +36,101 @@ FinBot
 
 #HSLIDE
 ```xml
-    <Model>
-      <Pattern>HI</Pattern>
-      <Response>Hello! What's your name?</Response>
-    </Model>
+<Model>
+  <Pattern>HELLO</Pattern>
+  <Response>Hi there! My name is Fin. Your personal financial ninja. What's your name?</Response>
+</Model>
 ```
 #HSLIDE
 ```
-    <Model>
-      <Pattern>
-		<Item>HOW ARE YOU</Item>
-		<Item>HOW IS IT GOING</Item>
-	  </Pattern>
-      <Response>I am doing great</Response>
-    </Model>
+<Model>
+  <Pattern>
+	<Item>HI</Item>
+	<Item>HEY</Item>
+	<Item>HELLO</Item>
+  </Pattern>
+  <Response>Hi there! My name is Fin. Your personal financial ninja. What's your name?</Response>
+</Model>
+```
+#HSLIDE
+```
+<Model>
+  <Pattern>
+	<Item>HI</Item>
+	<Item>HEY</Item>
+	<Item>HELLO</Item>
+  </Pattern>
+  <Response>Hi there! My name is Fin. Your personal financial ninja. What's your name?</Response>
+</Model>
+```
+#HSLIDE
+```
+<Model>
+  <Pattern>HOW ARE YOU</Pattern>
+  <Response>
+	<Random>
+		<Item>I am doing great</Item>
+		<Item>I am fine thank you</Item>
+		<Item>Never been better</Item>
+	</Random>
+</Response>
+</Model>
+```
+#HSLIDE
+```
+<Model>
+	<Pattern>{MY NAME IS} *</Pattern>
+	<Response>Hello <User Set="Name"><Match /></User>. It's nice to meet you.</Response>
+</Model>
+```
+#HSLIDE
+```
+<Model>
+	<Pattern>WHAT IS MY NAME</Pattern>
+	<Response>Your name is <User Get="Name" /></Response>
+</Model>
+```
+#HSLIDE
+```xml
+<Concept Name="Balance" xmlns:finbot="http://finbot.com/namespace#finbot">
+	<Model>
+	  <Pattern>
+			<Item>{WHAT IS MY BALANCE}</Item>
+			<Item>{WHAT MY BALANCE IS}</Item>
+	   </Pattern>
+	  <Response>Your balance is <finbot:Balance></finbot:Balance></Response>
+	</Model>
+</Concept>
+```
+#HSLIDE
+```C#
+public class BalanceAdapter : IAdapter
+{
+	public XName TagName
+	{
+		get
+		{
+			XNamespace ns = "http://finbot.com/namespace#finbot";
+			return ns + "Balance";
+		}
+	}
+	
+	private readonly IFinancialServices _financialServices;
+
+	public BalanceAdapter(IFinancialServices financialServices)
+	{
+		_financialServices = financialServices;
+	}
+
+	public override string Evaluate(Context context)
+	{
+		return _financialServices.GetTotalBalance().ToString();
+	}
+}
 ```
 #HSLIDE
 
-
-
+## Thank you!
 
 
 
