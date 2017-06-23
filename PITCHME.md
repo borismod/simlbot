@@ -40,7 +40,7 @@ Fin: Sure, your balance is $36,000
 </Model>
 ```
 #HSLIDE
-```
+```xml
 <Model>
   <Pattern>
 	<Item>HI</Item>
@@ -51,7 +51,7 @@ Fin: Sure, your balance is $36,000
 </Model>
 ```
 #HSLIDE
-```
+```xml
 <Model>
   <Pattern>HOW ARE YOU</Pattern>
   <Response>
@@ -64,14 +64,14 @@ Fin: Sure, your balance is $36,000
 </Model>
 ```
 #HSLIDE
-```
+```xml
 <Model>
 	<Pattern>{MY NAME IS} *</Pattern>
 	<Response>Hello <User Set="Name"><Match /></User>.</Response>
 </Model>
 ```
 #HSLIDE
-```
+```xml
 <Model>
 	<Pattern>WHAT IS MY NAME</Pattern>
 	<Response>Your name is <User Get="Name" /></Response>
