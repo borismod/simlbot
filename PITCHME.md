@@ -18,7 +18,7 @@ FinBot video
 
 Boris: Hello
 
-Fin: Hi there! My name is Fin. Your personal financial ninja. What's your name?
+Fin: Hi there! My name is Fin. What's your name?
 
 Boris: My name is Boris
 
@@ -30,15 +30,13 @@ Fin: Sure, your balance is $36,000
 
 #HSLIDE
 
-#HSLIDE
-
 ## Synthetic Intelligence Markup Language
 
 #HSLIDE
 ```xml
 <Model>
   <Pattern>HELLO</Pattern>
-  <Response>Hi there! My name is Fin. Your personal financial ninja. What's your name?</Response>
+  <Response>Hi there! My name is Fin. What's your name?</Response>
 </Model>
 ```
 #HSLIDE
@@ -49,18 +47,7 @@ Fin: Sure, your balance is $36,000
 	<Item>HEY</Item>
 	<Item>HELLO</Item>
   </Pattern>
-  <Response>Hi there! My name is Fin. Your personal financial ninja. What's your name?</Response>
-</Model>
-```
-#HSLIDE
-```
-<Model>
-  <Pattern>
-	<Item>HI</Item>
-	<Item>HEY</Item>
-	<Item>HELLO</Item>
-  </Pattern>
-  <Response>Hi there! My name is Fin. Your personal financial ninja. What's your name?</Response>
+  <Response>Hi there! My name is Fin. What's your name?</Response>
 </Model>
 ```
 #HSLIDE
@@ -80,7 +67,7 @@ Fin: Sure, your balance is $36,000
 ```
 <Model>
 	<Pattern>{MY NAME IS} *</Pattern>
-	<Response>Hello <User Set="Name"><Match /></User>. It's nice to meet you.</Response>
+	<Response>Hello <User Set="Name"><Match /></User>.</Response>
 </Model>
 ```
 #HSLIDE
@@ -106,6 +93,13 @@ Fin: Sure, your balance is $36,000
 ```C#
 public class BalanceAdapter : IAdapter
 {
+	private readonly IFinancialServices _financialServices;
+
+	public BalanceAdapter(IFinancialServices financialServices)
+	{
+		_financialServices = financialServices;
+	}
+
 	public XName TagName
 	{
 		get
@@ -113,14 +107,7 @@ public class BalanceAdapter : IAdapter
 			XNamespace ns = "http://finbot.com/namespace#finbot";
 			return ns + "Balance";
 		}
-	}
-	
-	private readonly IFinancialServices _financialServices;
-
-	public BalanceAdapter(IFinancialServices financialServices)
-	{
-		_financialServices = financialServices;
-	}
+	}	
 
 	public override string Evaluate(Context context)
 	{
@@ -131,6 +118,7 @@ public class BalanceAdapter : IAdapter
 #HSLIDE
 
 ## Thank you!
-
+https://github.com/borismod/simlbot
+https://github.com/borismod/finbotapp
 
 
