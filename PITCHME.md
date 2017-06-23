@@ -112,10 +112,13 @@ public class BalanceAdapter : IAdapter
 ```C#
 public class BotController : ApiController
 {
+	private SimlBot _simlBot;
+	
 	public BotController()
 	{
 		_simlBot = new SimlBot();
-        _simlBot.PackageManager.LoadFromString(File.ReadAllText("FinBot.simlpk"));
+		string simlPackage = File.ReadAllText("FinBot.simlpk");
+        _simlBot.PackageManager.LoadFromString(simlPackage);
         _simlBot.Adapters.Add(new BalanceAdapter());
 	}
 
