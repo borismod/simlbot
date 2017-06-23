@@ -93,13 +93,6 @@ Fin: Sure, your balance is $36,000
 ```C#
 public class BalanceAdapter : IAdapter
 {
-	private readonly IFinancialServices _financialServices;
-
-	public BalanceAdapter(IFinancialServices financialServices)
-	{
-		_financialServices = financialServices;
-	}
-
 	public XName TagName
 	{
 		get
@@ -111,12 +104,29 @@ public class BalanceAdapter : IAdapter
 
 	public override string Evaluate(Context context)
 	{
-		return _financialServices.GetTotalBalance().ToString();
+		return FinancialServices.GetTotalBalance().ToString();
 	}
 }
 ```
 #HSLIDE
+```C#
+public class BotController : ApiController
+{
+	public BotController()
+	{
+		_simlBot = new SimlBot();
+        _simlBot.PackageManager.LoadFromString(File.ReadAllText("FinBot.simlpk"));
+        _simlBot.Adapters.Add(new BalanceAdapter());
+	}
 
+	[HttpGet]
+	public string Get([FromUri] string input)
+	{
+	    return _simlBot.Chat(normalizedInput).BotMessage;
+	}
+}
+```
+#HSLIDE
 ## Thank you!
 https://github.com/borismod/simlbot
 https://github.com/borismod/finbotapp
