@@ -11,8 +11,7 @@ A chatbot is a computer program which conducts a conversation via auditory or te
 <!-- .slide: class="center" -->
 #HSLIDE
 
-FinBot video
-![Video](https://www.youtube.com/watch?v=8vAzybPv1fo)
+![Video](https://www.youtube.com/embed/8vAzybPv1fo)
 <!-- .slide: class="center" -->
 #HSLIDE
 
