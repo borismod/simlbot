@@ -1,19 +1,19 @@
 ## Building your first chatbot 
-
+<!-- .slide: class="center" -->
 #HSLIDE
 
 ##I am Boris Modylevsky
 ##I am not a bot
-
+<!-- .slide: class="center" -->
 #HSLIDE
 
 A chatbot is a computer program which conducts a conversation via auditory or textual methods.
-
+<!-- .slide: class="center" -->
 #HSLIDE
 
 FinBot video
 ![Video](https://www.youtube.com/watch?v=8vAzybPv1fo)
-
+<!-- .slide: class="center" -->
 #HSLIDE
 
 Boris: Hello
@@ -31,7 +31,7 @@ Fin: Sure, your balance is $36,000
 #HSLIDE
 
 ## Synthetic Intelligence Markup Language
-
+<!-- .slide: class="center" -->
 #HSLIDE
 ```xml
 <Model>
@@ -39,6 +39,7 @@ Fin: Sure, your balance is $36,000
   <Response>Hi there! My name is Fin. What's your name?</Response>
 </Model>
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```xml
 <Model>
@@ -50,6 +51,7 @@ Fin: Sure, your balance is $36,000
   <Response>Hi there! My name is Fin. What's your name?</Response>
 </Model>
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```xml
 <Model>
@@ -63,6 +65,7 @@ Fin: Sure, your balance is $36,000
 </Response>
 </Model>
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```xml
 <Model>
@@ -70,6 +73,7 @@ Fin: Sure, your balance is $36,000
 	<Response>Hello <User Set="Name"><Match /></User>.</Response>
 </Model>
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```xml
 <Model>
@@ -77,6 +81,7 @@ Fin: Sure, your balance is $36,000
 	<Response>Your name is <User Get="Name" /></Response>
 </Model>
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```xml
 <Concept Name="Balance" 
@@ -89,6 +94,7 @@ Fin: Sure, your balance is $36,000
 	</Model>
 </Concept>
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```C#
 public class BalanceAdapter : IAdapter
@@ -108,6 +114,7 @@ public class BalanceAdapter : IAdapter
 	}
 }
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ```C#
 public class BotController : ApiController
@@ -124,13 +131,14 @@ public class BotController : ApiController
 	[HttpGet]
 	public string Get([FromUri] string input)
 	{
-	    return _simlBot.Chat(normalizedInput).BotMessage;
+	    return _simlBot.Chat(input).BotMessage;
 	}
 }
 ```
+<!-- .slide: class="center" -->
 #HSLIDE
 ## Thank you!
 https://github.com/borismod/simlbot
 https://github.com/borismod/finbotapp
-
+<!-- .slide: class="center" -->
 
