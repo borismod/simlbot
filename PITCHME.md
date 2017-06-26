@@ -1,18 +1,15 @@
-## Building your first chatbot 
 <!-- .slide: class="center" -->
+## Building your first chatbot 
 #HSLIDE
-
+<!-- .slide: class="center" -->
 ##I am Boris Modylevsky
 ##I am not a bot
-<!-- .slide: class="center" -->
 #HSLIDE
-
+<!-- .slide: class="center" -->
 A chatbot is a computer program which conducts a conversation via auditory or textual methods.
-<!-- .slide: class="center" -->
 #HSLIDE
-
-![Video](https://www.youtube.com/embed/8vAzybPv1fo)
 <!-- .slide: class="center" -->
+![Video](https://www.youtube.com/embed/8vAzybPv1fo)
 #HSLIDE
 
 Boris: Hello
@@ -28,18 +25,18 @@ Boris: Can you tell me my bank account balance?
 Fin: Sure, your balance is $36,000
 
 #HSLIDE
-
-## Synthetic Intelligence Markup Language
 <!-- .slide: class="center" -->
+## Synthetic Intelligence Markup Language
 #HSLIDE
+<!-- .slide: class="center" -->
 ```xml
 <Model>
   <Pattern>HELLO</Pattern>
   <Response>Hi there! My name is Fin. What's your name?</Response>
 </Model>
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
+<!-- .slide: class="center" -->
 ```xml
 <Model>
   <Pattern>
@@ -50,8 +47,8 @@ Fin: Sure, your balance is $36,000
   <Response>Hi there! My name is Fin. What's your name?</Response>
 </Model>
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
+<!-- .slide: class="center" -->
 ```xml
 <Model>
   <Pattern>HOW ARE YOU</Pattern>
@@ -64,24 +61,24 @@ Fin: Sure, your balance is $36,000
 </Response>
 </Model>
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
+<!-- .slide: class="center" -->
 ```xml
 <Model>
 	<Pattern>MY NAME IS *</Pattern>
 	<Response>Hello <User Set="Name"><Match /></User>.</Response>
 </Model>
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
+<!-- .slide: class="center" -->
 ```xml
 <Model>
 	<Pattern>WHAT IS MY NAME</Pattern>
 	<Response>Your name is <User Get="Name" /></Response>
 </Model>
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
+<!-- .slide: class="center" -->
 ```xml
 <Concept Name="Balance" 
 	xmlns:finbot="http://finbot.com/namespace#finbot">
@@ -93,8 +90,8 @@ Fin: Sure, your balance is $36,000
 	</Model>
 </Concept>
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
+<!-- .slide: class="center" -->
 ```C#
 public class BalanceAdapter : IAdapter
 {
@@ -113,28 +110,19 @@ public class BalanceAdapter : IAdapter
 	}
 }
 ```
-<!-- .slide: class="center" -->
 #HSLIDE
-```C#
-public class BotController : ApiController
-{
-	private SimlBot _simlBot =  new SimlBot();
-	
-	public BotController()
-	{
-		string simlPackage = File.ReadAllText("FinBot.simlpk");
-        _simlBot.PackageManager.LoadFromString(simlPackage);
-        _simlBot.Adapters.Add(new BalanceAdapter());
-	}
-
-	[HttpGet]
-	public string Get([FromUri] string input)
-	{
-	    return _simlBot.Chat(input).BotMessage;
-	}
-}
+```Powershell
+Install-Package Syn.Bot
 ```
+#HSLIDE
 <!-- .slide: class="center" -->
+```C#
+SimlBot simlBot =  new SimlBot();
+simlPackage = File.ReadAllText("FinBot.simlpk");
+simlBot.PackageManager.LoadFromString(simlPackage);
+simlBot.Adapters.Add(new BalanceAdapter());
+ChatResult chatResult = simlBot.Chat(input);
+```
 #HSLIDE
 ## Thank you!
 https://github.com/borismod/simlbot
