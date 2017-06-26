@@ -129,11 +129,13 @@ simlBot.Adapters.Add(new BalanceAdapter());
 
 ChatResult chatResult = simlBot.Chat(input);
 ```
+
 @[1](using)
 @[3](Create SimlBot)
 @[5-6](Load package)
 @[8](Load adapters)
 @[10](Chat)
+
 #HSLIDE
 ## Thank you!
 https://github.com/borismod/simlbot
