@@ -111,17 +111,29 @@ public class BalanceAdapter : IAdapter
 }
 ```
 #HSLIDE
+## Install nuget package
 <!-- .slide: class="center" -->
 ```Powershell
 Install-Package Syn.Bot
 ```
 #HSLIDE
 ```C#
+using Syn.Bot.Siml;
+
 SimlBot simlBot =  new SimlBot();
+
 simlPackage = File.ReadAllText("FinBot.simlpk");
 simlBot.PackageManager.LoadFromString(simlPackage);
+
 simlBot.Adapters.Add(new BalanceAdapter());
+
 ChatResult chatResult = simlBot.Chat(input);
+
+@[1](using)
+@[3](Create SimlBot)
+@[5-6](Load package)
+@[8](Load adapters)
+@[10](Chat)
 ```
 #HSLIDE
 ## Thank you!
