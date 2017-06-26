@@ -111,11 +111,11 @@ public class BalanceAdapter : IAdapter
 }
 ```
 #HSLIDE
+<!-- .slide: class="center" -->
 ```Powershell
 Install-Package Syn.Bot
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
 ```C#
 SimlBot simlBot =  new SimlBot();
 simlPackage = File.ReadAllText("FinBot.simlpk");

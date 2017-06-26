@@ -1,2 +1,3 @@
 footnote : "Twitter: @bormod Github: @borismod"
-vertical-center : false
+vertical-center : true
+horizontal-center: false
