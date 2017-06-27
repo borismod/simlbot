@@ -7,9 +7,17 @@
 A chatbot is a computer program which conducts a conversation via auditory or textual methods.
 #HSLIDE
 
-### FinBot video
+### FinBot
 
 ![Video](https://www.youtube.com/embed/8vAzybPv1fo)
+#HSLIDE
+
+## SYN
+
+* Syn Bot Studio
+* Synthetic Intelligence Markup Language
+* Syn.Bot nuget package
+
 #HSLIDE
 
 ### Synthetic Intelligence Markup Language
