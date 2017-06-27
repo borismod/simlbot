@@ -16,12 +16,14 @@ A chatbot is a computer program which conducts a conversation via auditory or te
 
 ```xml
 <Siml>
-	<Concept Name="Introduction">
-		<Model>
-		  <Pattern>HELLO</Pattern>
-		  <Response>Hi there! My name is Fin. What's your name?</Response>
-		</Model>
-	</Concept>
+  <Concept Name="Introduction">
+    <Model>
+	  <Pattern>HELLO</Pattern>
+	  <Response>
+		Hi there! My name is Fin. What's your name?
+	  </Response>
+    </Model>
+  </Concept>
 </Siml>
 ```
 #HSLIDE
@@ -35,7 +37,9 @@ A chatbot is a computer program which conducts a conversation via auditory or te
 	<Item>HEY</Item>
 	<Item>HELLO</Item>
   </Pattern>
-  <Response>Hi there! My name is Fin. What's your name?</Response>
+  <Response>
+    Hi there! My name is Fin. What's your name?
+  </Response>
 </Model>
 ```
 #HSLIDE
@@ -78,8 +82,6 @@ $ Matches zero or more words but ranks lower than %
 
 #HSLIDE
 
-#HSLIDE
-
 ### Bot Variables
 
 ```xml
@@ -96,19 +98,16 @@ $ Matches zero or more words but ranks lower than %
 ```xml
 <Model>
 	<Pattern>MY NAME IS *</Pattern>
-	<Response>Nice to meet you <User Set="Name"><Match/></User>.</Response>
+	<Response>
+		Nice to meet you <User Set="Name"><Match/></User>.
+	</Response>
 </Model>
-```
-#HSLIDE
-
-### User Variables
-
-```xml
 <Model>
 	<Pattern>WHAT IS MY NAME</Pattern>
 	<Response>Your name is <User Get="Name" /></Response>
 </Model>
 ```
+
 #HSLIDE
 
 ### Custom adapter
@@ -162,7 +161,7 @@ public class BalanceAdapter : IAdapter
 
 #HSLIDE
 
-### Use SIML in C#
+### Use SIML in C\#
 
 ```C#
 using Syn.Bot.Siml;
@@ -182,6 +181,10 @@ ChatResult chatResult = simlBot.Chat(input);
 @[5-6](Load package)
 @[8](Load adapters)
 @[10](Get chat result)
+
+#HSLIDE
+
+## Demo
 
 #HSLIDE
 
