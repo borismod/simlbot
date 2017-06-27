@@ -69,9 +69,13 @@ A chatbot is a computer program which conducts a conversation via auditory or te
 ### More wildcards
 
 %  Matches zero or more words
-_  Matches one or more words
+
+\_  Matches one or more words
+
 $ Matches zero or more words but ranks lower than %
-* Matches one or more words but ranks lower than _
+
+\* Matches one or more words but ranks lower than \_
+
 #HSLIDE
 
 #HSLIDE
