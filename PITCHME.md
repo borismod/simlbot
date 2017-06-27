@@ -114,7 +114,7 @@ $ Matches zero or more words but ranks lower than %
 
 ```xml
 <Concept Name="Balance" 
-	xmlns:finbot="http://finbot.com/namespace#finbot">
+	xmlns:finbot="http://finbot.com/ns">
 	<Model>
 	  <Pattern>{WHAT IS MY BALANCE}</Pattern>
 	  <Response>
@@ -143,7 +143,7 @@ public class BalanceAdapter : IAdapter
 	{
 		get
 		{
-			XNamespace ns = "http://finbot.com/namespace#finbot";
+			XNamespace ns = "http://finbot.com/ns";
 			return ns + "Balance";
 		}
 	}	
@@ -161,7 +161,7 @@ public class BalanceAdapter : IAdapter
 
 #HSLIDE
 
-### Use SIML in C\#
+### Consume SIML package
 
 ```C#
 using Syn.Bot.Siml;
@@ -191,5 +191,3 @@ ChatResult chatResult = simlBot.Chat(input);
 ## Thank you!
 https://github.com/borismod/simlbot
 https://github.com/borismod/finbotapp
-<!-- .slide: class="center" -->
-
