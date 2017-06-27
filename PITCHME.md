@@ -1,42 +1,33 @@
-<!-- .slide: class="center" -->
 ## Building your first chatbot 
 #HSLIDE
-<!-- .slide: class="center" -->
+
 ##I am Boris Modylevsky
 ##I am not a bot
 #HSLIDE
-<!-- .slide: class="center" -->
 A chatbot is a computer program which conducts a conversation via auditory or textual methods.
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### FinBot video
+
 ![Video](https://www.youtube.com/embed/8vAzybPv1fo)
 #HSLIDE
 
-Boris: Hello
+### Synthetic Intelligence Markup Language
 
-Fin: Hi there! My name is Fin. What's your name?
-
-Boris: My name is Boris
-
-Fin: Hello Boris. It's nice to meet you. How can I help you?
-
-Boris: Can you tell me my bank account balance?
-
-Fin: Sure, your balance is $36,000
-
-#HSLIDE
-<!-- .slide: class="center" -->
-## Synthetic Intelligence Markup Language
-#HSLIDE
-<!-- .slide: class="center" -->
 ```xml
-<Model>
-  <Pattern>HELLO</Pattern>
-  <Response>Hi there! My name is Fin. What's your name?</Response>
-</Model>
+<Siml>
+	<Concept Name="Introduction">
+		<Model>
+		  <Pattern>HELLO</Pattern>
+		  <Response>Hi there! My name is Fin. What's your name?</Response>
+		</Model>
+	</Concept>
+</Siml>
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### Multiple patterns
+
 ```xml
 <Model>
   <Pattern>
@@ -48,7 +39,9 @@ Fin: Sure, your balance is $36,000
 </Model>
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### Random response
+
 ```xml
 <Model>
   <Pattern>HOW ARE YOU</Pattern>
@@ -62,15 +55,50 @@ Fin: Sure, your balance is $36,000
 </Model>
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### Wildcards
+
 ```xml
 <Model>
 	<Pattern>MY NAME IS *</Pattern>
-	<Response>Hello <User Set="Name"><Match /></User>.</Response>
+	<Response>Hello <Match /></Response>
 </Model>
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### More wildcards
+
+%  Matches zero or more words
+_  Matches one or more words
+$ Matches zero or more words but ranks lower than %
+* Matches one or more words but ranks lower than _
+#HSLIDE
+
+#HSLIDE
+
+### Bot Variables
+
+```xml
+<Model>
+	<Pattern>WHAT IS YOUR NAME</Pattern>
+	<Response>My name is <Bot Get="Name"></Bot>.</Response>
+</Model>
+```
+
+#HSLIDE
+
+### User Variables
+
+```xml
+<Model>
+	<Pattern>MY NAME IS *</Pattern>
+	<Response>Nice to meet you <User Set="Name"><Match/></User>.</Response>
+</Model>
+```
+#HSLIDE
+
+### User Variables
+
 ```xml
 <Model>
 	<Pattern>WHAT IS MY NAME</Pattern>
@@ -78,7 +106,9 @@ Fin: Sure, your balance is $36,000
 </Model>
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### Custom adapter
+
 ```xml
 <Concept Name="Balance" 
 	xmlns:finbot="http://finbot.com/namespace#finbot">
@@ -91,8 +121,19 @@ Fin: Sure, your balance is $36,000
 </Concept>
 ```
 #HSLIDE
-<!-- .slide: class="center" -->
+
+### Install nuget package
+
+```Powershell
+Install-Package Syn.Bot
+```
+
+#HSLIDE
+
+### Implement custom adapter
+
 ```C#
+using Syn.Bot.Siml;
 public class BalanceAdapter : IAdapter
 {
 	public XName TagName
@@ -103,20 +144,22 @@ public class BalanceAdapter : IAdapter
 			return ns + "Balance";
 		}
 	}	
-
 	public override string Evaluate(Context context)
 	{
-		return FinancialServices.GetTotalBalance().ToString();
+		/// Your code goes here
 	}
 }
 ```
+
+@[1](Add using)
+@[2](Define Adapter class)
+@[4-11](Define XML Tag)
+@[12-15](Implement Evaluate method)
+
 #HSLIDE
-## Install nuget package
-<!-- .slide: class="center" -->
-```Powershell
-Install-Package Syn.Bot
-```
-#HSLIDE
+
+### Use SIML in C#
+
 ```C#
 using Syn.Bot.Siml;
 
@@ -130,13 +173,14 @@ simlBot.Adapters.Add(new BalanceAdapter());
 ChatResult chatResult = simlBot.Chat(input);
 ```
 
-@[1](using)
+@[1](Add using)
 @[3](Create SimlBot)
 @[5-6](Load package)
 @[8](Load adapters)
-@[10](Chat)
+@[10](Get chat result)
 
 #HSLIDE
+
 ## Thank you!
 https://github.com/borismod/simlbot
 https://github.com/borismod/finbotapp
